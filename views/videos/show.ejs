@@ -28,13 +28,54 @@
       </div>
     </div>
   </div>
+
   <div class="col-md-6 text-center">
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">CrowdSub</h3>
       </div>
       <div class="panel-body">
-        [CrowdSub content goes here]
+        <%# Creating new comments form%>
+        <form class="" action=<%="/videos/" +videoId%> method="post">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12 text-left">
+                <label for="timing">Timing</label>
+              </div>
+            </div>
+            <input type="number" class="form-control" id="timing" name="timing" placeholder="Enter Timing number">
+            <div class="row">
+              <div class="col-md-12 text-left">
+                <small id="timingHelp" class="form-text text-muted">
+                  This is the no. above the time range
+                </small>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12 text-left">
+                <label for="sugsub">Suggested Subs</label>
+              </div>
+            </div>
+            <input type="text" class="form-control" id="sugsub" name="sugsub" placeholder="e.g. That's the reason why poor Cinderella was able to meet a rich man...">
+            <br>
+            <div class="row">
+              <div class="col-md-12 text-left">
+                <label for="reason">Reason</label>
+              </div>
+            </div>
+            <input type="text" class="form-control" id="reason" name="reason" placeholder="e.g. Quality of spoons are a literal translation of wealth">
+          </div>
+          <button type="submit" class="btn btn-primary">CrowdSub!</button>
+        </form>
+        <%# For the upvoting after comment is made%>
+        <div id="topic" class="upvote">
+          <a class="upvote"></a>
+          <span class="count">0</span>
+          <a class="downvote"></a>
+          <a class="star"></a>
+        </div>
+
       </div>
     </div>
   </div>
