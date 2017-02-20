@@ -7,29 +7,64 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 text-center">
+  <div class="col-md-4 text-center">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title">Original Subs</h3>
+        <h3 class="panel-title">Original</h3>
       </div>
       <div class="panel-body">
-        <h4>1</h4>
-        <p>00:04:59,560 --> 00:05:03,553</p>
-        <p>What were you saying?</p>
-        <h4>2</h4>
-        <p>00:05:14,400 --> 00:05:16,550</p>
-        <p>That the reason why dirt spoon Cinderella was able to meet a gold spoon man was because she went to the ball</p>
-        <h4>3</h4>
-        <p>00:05:16,840 --> 00:05:19,115</p>
-        <p>Well, that audacity!</p>
-        <h4>4</h4>
-        <p>00:05:19,400 --> 00:05:21,834</p>
-        <p>Indeed. Makes me feel like the colour of my red shirt.</p>
+        <div class="commentBox">
+          <p><b>1</b></p>
+          <p>00:04:59,560 --> 00:05:03,553</p>
+          <p>What were you saying?</p>
+        </div>
+        <div class="commentBox">
+          <p><b>2</b></p>
+          <p>00:05:14,400 --> 00:05:16,550</p>
+          <p>That the reason why dirt spoon Cinderella was able to meet a gold spoon man was because she went to the ball</p>
+        </div>
+        <div class="commentBox">
+          <p><b>3</b></p>
+          <p>00:05:16,840 --> 00:05:19,115</p>
+          <p>Well, that audacity!</p>
+        </div>
+        <div class="commentBox">
+          <p><b>4</b></p>
+          <p>00:05:19,400 --> 00:05:21,834</p>
+          <p>Indeed. Makes me feel like the colour of my red shirt.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="col-md-6 text-center">
+  <div class="col-md-4 text-left">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Submitted</h3>
+      </div>
+      <div class="panel-body">
+        <%submittedArray.forEach(function(sub){%>
+          <div class="commentBox">
+          <div class="usertag">
+            <span class="label label-default usertag">User123</span>
+          </div>
+            <p><strong>Timing:</strong> <%=sub.timing%></p>
+            <p><strong>Suggested Subs:</strong> <%=sub.sugsub%></p>
+            <p><strong>Reason:</strong> <%=sub.reason%></p>
+
+            <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
+              <button class="btn btn-default btn-xs" type="submit">
+                Delete
+              </button>
+            </form>
+
+          </div>
+        <%})%>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 text-center">
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">CrowdSub</h3>
@@ -47,7 +82,7 @@
             <div class="row">
               <div class="col-md-12 text-left">
                 <small id="timingHelp" class="form-text text-muted">
-                  This is the no. above the time range
+                  <i>Refers to no. above time range</i>
                 </small>
               </div>
             </div>
@@ -57,24 +92,17 @@
                 <label for="sugsub">Suggested Subs</label>
               </div>
             </div>
-            <input type="text" class="form-control" id="sugsub" name="sugsub" placeholder="e.g. That's the reason why poor Cinderella was able to meet a rich man...">
+            <input type="text" class="form-control" id="sugsub" name="sugsub" placeholder="e.g. That's why Cinderella is poor...">
             <br>
             <div class="row">
               <div class="col-md-12 text-left">
                 <label for="reason">Reason</label>
               </div>
             </div>
-            <input type="text" class="form-control" id="reason" name="reason" placeholder="e.g. Quality of spoons are a literal translation of wealth">
+            <input type="text" class="form-control" id="reason" name="reason" placeholder="e.g. Culturally, dirty spoon symbolises poverty...">
           </div>
-          <button type="submit" class="btn btn-primary">CrowdSub!</button>
+          <button type="submit" class="btn btn-primary btn-sm">CrowdSub!</button>
         </form>
-        <%# For the upvoting after comment is made%>
-        <div id="topic" class="upvote">
-          <a class="upvote"></a>
-          <span class="count">0</span>
-          <a class="downvote"></a>
-          <a class="star"></a>
-        </div>
 
       </div>
     </div>

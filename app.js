@@ -23,9 +23,7 @@ app.set('view engine', 'ejs')
 
 // homepage
 const vikiAuth = require('./controllers/vikiauth_controller')
-app.get('/', function (req, res) {
-  vikiAuth(req, res)
-})
+app.get('/', vikiAuth)
 
 const videoRoute = require('./routes/video_router')
 app.use('/videos', videoRoute)

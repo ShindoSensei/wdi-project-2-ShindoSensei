@@ -2,6 +2,18 @@ let Comment = require('../models/comment')
 
 let commentController = {
 
+  show: (req, res) => {
+    Comment.find({videoid: req.params.id}, function (err, doc) {
+      if (err) {
+        throw err
+      }
+      res.render('videos/show', {
+        videoId: req.params.id,
+        submittedArray: doc
+      })
+    })
+  },
+
   create: (req, res) => {
     Comment.create({
       videoid: req.params.id,
@@ -15,7 +27,28 @@ let commentController = {
       }
       res.redirect('/videos/' + req.params.id)
     })
+  },
+
+  delete: (req, res) => {
+    Comment.findByIdAndRemove(req.query.commentid, function (err, output) {
+      if (err) {
+        throw err
+      }
+      console.log('Deleted comment of id:' + req.query.commentid)
+      res.redirect('/videos/' + req.params.id)
+    })
   }
+
+  // app.delete('/animals/:id', isNotLoggedIn, function (req, res, next) {
+  //   Animal.findByIdAndRemove(req.params.id, function (err, output) {
+  //     if (err) return next(err)
+  //     req.flash('flash', {
+  //       type: 'warning',
+  //       message: 'Deleted an animal'
+  //     })
+  //     res.redirect('/animals')
+  //   })
+  // })
 // app.post('/animals', isNotLoggedIn, function (req, res, next) {
 //   Animal.create(req.body.animals, function (err, output) {
 //     if (err) {
