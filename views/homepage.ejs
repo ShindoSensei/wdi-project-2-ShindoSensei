@@ -1,0 +1,16 @@
+<div class="row">
+  <% videoArr.forEach(function(video) { %>
+    <div class="col-md-3">
+
+    <div class="thumbnail">
+      <img src=<%=video.images.poster.url%> alt=<%=video.titles.en%> style="width:250px;height:142.8px;">
+      <div class="caption">
+      <a href=<%="/videos/" + video.id%>>
+            <h5><%= video.titles.en %></h5>
+
+      </a>
+      </div>
+    </div>
+    </div>
+  <% }) %>
+</div>

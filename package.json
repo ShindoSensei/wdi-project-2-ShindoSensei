@@ -1,0 +1,33 @@
+{
+  "name": "wdi-project-2-shindosensei",
+  "version": "1.0.0",
+  "description": "This is the starter code for WDI projects. Please update this README file with information specific to your project. Replace this paragraph for instance, with a short description of your project. Then update the sections below. Refer to your project specificaion for instructions on how to submit your projects.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdi-sg/wdi-project-2-ShindoSensei.git"
+  },
+  "author": "Justin Teo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wdi-sg/wdi-project-2-ShindoSensei/issues"
+  },
+  "homepage": "https://github.com/wdi-sg/wdi-project-2-ShindoSensei#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "crypto": "0.0.3",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.6",
+    "express": "^4.14.1",
+    "express-ejs-layouts": "^2.2.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.8.4",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0",
+    "request": "^2.79.0"
+  }
+}
