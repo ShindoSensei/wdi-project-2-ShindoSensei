@@ -37,30 +37,29 @@
     </div>
   </div>
 
-  <div class="col-md-4 text-left">
+  <div class="col-md-4">
     <div class="panel panel-info">
-      <div class="panel-heading">
+      <div class="panel-heading text-center">
         <h3 class="panel-title">Submitted</h3>
       </div>
       <div class="panel-body">
         <%submittedArray.forEach(function(sub){%>
           <div class="commentBox">
-          <div class="usertag">
-            <span class="label label-default usertag">User123</span>
-          </div>
-          <strong>Timing</strong>
-          <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%></p>
-          <strong>Suggested Subs</strong>
-          <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%></p>
-          <strong>Reason</strong>
-          <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%></p>
-
+            <div class="usertag">
+              <span class="label label-default usertag">User123</span>
+            </div>
+            <strong>Timing</strong>
+            <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
+            </p>
+            <strong>Suggested Subs</strong>
+            <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
+            </p>
+            <strong>Reason</strong>
+            <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
+            </p>
             <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
-              <button class="btn btn-default btn-xs" type="submit">
-                Delete
-              </button>
+              <button class="btn btn-default btn-xs" type="submit">Delete</button>
             </form>
-
           </div>
         <%})%>
       </div>

@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const commentController = require('../controllers/comment_controller')
 
-router.get('/:id', commentController.show)
+var isNotLoggedIn = require('../middleware/isNotLoggedIn')
+
+router.get('/:id', isNotLoggedIn, commentController.show)
 
 router.post('/:id', commentController.create)
 

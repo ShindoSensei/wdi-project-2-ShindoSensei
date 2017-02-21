@@ -60,44 +60,6 @@ let commentController = {
       res.redirect('/videos/' + req.params.id)
     })
   }
-
-  // app.delete('/animals/:id', isNotLoggedIn, function (req, res, next) {
-  //   Animal.findByIdAndRemove(req.params.id, function (err, output) {
-  //     if (err) return next(err)
-  //     req.flash('flash', {
-  //       type: 'warning',
-  //       message: 'Deleted an animal'
-  //     })
-  //     res.redirect('/animals')
-  //   })
-  // })
-// app.post('/animals', isNotLoggedIn, function (req, res, next) {
-//   Animal.create(req.body.animals, function (err, output) {
-//     if (err) {
-//       if (err.name === 'ValidationError') {
-//         let errMessages = []
-//         for (field in err.errors) {
-//           errMessages.push(err.errors[field].message)
-//         }
-//
-//         console.log(errMessages)
-//
-//         req.flash('flash', {
-//           type: 'danger',
-//           message: errMessages
-//         })
-//         res.redirect('/animals')
-//       }
-//
-//       return next(err)
-//     }
-//     req.flash('flash', {
-//       type: 'success',
-//       message: 'Created an animal with name: ' + output.name
-//     })
-//     res.redirect('/animals')
-//   })
-// }))
 }
 
 module.exports = commentController

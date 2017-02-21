@@ -19,7 +19,7 @@ module.exports = function vikiAuth (req, res) {
     // api filters
     origin_country: 'cn',
     // genre: '23g',
-    sort: 'trending',
+    sort: 'recent_views',
     subtitle_completion: 'en',
     with_paging: 'true',
     page: '1',
@@ -34,7 +34,7 @@ module.exports = function vikiAuth (req, res) {
       if (!err && respond.statusCode === 200) {
         // res.send(JSON.parse(body))
         var videoArray = JSON.parse(body).response // array of video objects
-        res.render('homepage', {videoArr: videoArray})
+        res.render('homepage', {videoArr: videoArray, flash: req.flash('flash')[0]})
         // console.log(body)
       }
     })
