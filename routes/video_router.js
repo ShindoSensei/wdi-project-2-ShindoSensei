@@ -6,6 +6,8 @@ router.get('/:id', commentController.show)
 
 router.post('/:id', commentController.create)
 
+router.put('/:id', commentController.edit)
+
 router.delete('/:id', commentController.delete)
 
 module.exports = router

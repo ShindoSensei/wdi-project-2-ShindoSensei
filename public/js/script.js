@@ -16,3 +16,11 @@ $('.upvote').upvote({count: 0, upvoted: 0}) // Check if all the counts add to th
 // for (var i = 0; i < upvoteArr.length; i++) {
 //   $('#' + upvoteArr[i].id).upvote({count: 0, upvoted: 0})
 // }
+
+// x-editable
+// turn to inline mode
+$.fn.editable.defaults.mode = 'inline'
+
+$(document).ready(function () {
+  $('.editClass').editable()
+})

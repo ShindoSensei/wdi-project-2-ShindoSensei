@@ -48,9 +48,12 @@
           <div class="usertag">
             <span class="label label-default usertag">User123</span>
           </div>
-            <p><strong>Timing:</strong> <%=sub.timing%></p>
-            <p><strong>Suggested Subs:</strong> <%=sub.sugsub%></p>
-            <p><strong>Reason:</strong> <%=sub.reason%></p>
+          <strong>Timing</strong>
+          <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%></p>
+          <strong>Suggested Subs</strong>
+          <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%></p>
+          <strong>Reason</strong>
+          <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%></p>
 
             <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
               <button class="btn btn-default btn-xs" type="submit">

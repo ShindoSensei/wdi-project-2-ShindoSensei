@@ -4,7 +4,7 @@ var CommentSchema = new mongoose.Schema({
     type: String, required: [true, 'No video id!']
   },
   timing: {
-    type: Number, required: [true, 'No timing entered!']
+    type: String, required: [true, 'No timing entered!']
   },
   sugsub: {
     type: String, required: [true, 'No suggested subs entered!']
