@@ -55,13 +55,13 @@ app.use(function (req, res, next) {
   next()
 })
 
-// Route to homepage
-const vikiAuth = require('./controllers/vikiauth_controller')
-app.get('/', vikiAuth)
-
 // Route to authentication pages
 const Auth = require('./routes/auth_router')
 app.use('/', Auth)
+
+// Route to homepage
+const vikiAuth = require('./controllers/vikiauth_controller')
+app.get('/', vikiAuth)
 
 // Route to video pages
 const videoRoute = require('./routes/video_router')

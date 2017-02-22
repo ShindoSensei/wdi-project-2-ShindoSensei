@@ -49,16 +49,23 @@
               <span class="label label-default usertag"><%=sub.user.local.nickname%></span>
             </div>
             <strong>Timing</strong>
-            <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
+            <%var whatClass =""%>
+            <%var buttonClass="hidden"%>
+            <%if(user.local.email===sub.user.local.email){%>
+              <%whatClass = "editClass noBorder"%>
+              <%buttonClass = ""%>
+              <%}%>
+            <p class="<%=whatClass%>" data-type="text" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
             </p>
             <strong>Suggested Subs</strong>
-            <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
+            <p class="<%=whatClass%>" data-type="text" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
             </p>
             <strong>Reason</strong>
-            <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
+            <p class="<%=whatClass%>" data-type="text" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
             </p>
+
             <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
-              <button class="btn btn-default btn-xs" type="submit">Delete</button>
+              <button class="btn btn-danger btn-xs <%=buttonClass%>" type="submit">Delete</button>
             </form>
           </div>
           <br>

@@ -23,9 +23,12 @@ router.get('/login', isLoggedIn, function (req, res) {
 router.post('/login', authController.login)
 
 // Logout
-var isNotLoggedIn = require('../middleware/isNotLoggedIn')
-router.get('/logout', isNotLoggedIn, function (req, res) {
-  req.logout() // remove the session => req.user will now be = undefined , req.isAuthenticated() will = false
-  res.redirect('/')
+router.get('/logout', function (req, res) {
+  // req.logout() // remove the session => req.user will now be = undefined , req.isAuthenticated() will = false
+  req.session.destroy(function (err) {
+    if (err) { throw err }
+    res.redirect('/')
+  })
+  // res.redirect('/')
 })
 module.exports = router

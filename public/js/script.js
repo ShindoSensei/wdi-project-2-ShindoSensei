@@ -1,6 +1,6 @@
 /* global $ */
 
-$('.upvote').upvote({count: 0, upvoted: 0}) // Check if all the counts add to the same
+// $('.upvote').upvote({count: 0, upvoted: 0}) // Check if all the counts add to the same
 
 // Possible manual created upvote and downvote
 // <input type="submit" name="action" value="increment" />
@@ -19,8 +19,8 @@ $('.upvote').upvote({count: 0, upvoted: 0}) // Check if all the counts add to th
 
 // x-editable
 // turn to inline mode
-$.fn.editable.defaults.mode = 'inline'
 
 $(document).ready(function () {
+  $.fn.editable.defaults.mode = 'inline'
   $('.editClass').editable()
 })

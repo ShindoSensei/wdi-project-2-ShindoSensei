@@ -21,6 +21,7 @@
       <%}%>
       <%if(isAuthenticated){%>
         <ul class="nav navbar-nav navbar-right">
+        <li><a><%= user.local.email%></a></li>
           <li><a href="/logout">Logout</a></li>
         </ul>
       <%}%>
