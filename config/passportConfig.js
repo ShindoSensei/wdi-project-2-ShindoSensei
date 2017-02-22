@@ -39,7 +39,7 @@ module.exports = function (passport) {
       }
       return next(err, foundUser, req.flash('flash', {
         type: 'success',
-        message: 'Successfully logged in. Welcome to CrowdSub!'
+        message: 'Successfully logged in. Welcome to CrowdSub ' + foundUser.local.nickname + '!'
       }))
     })
   }))
@@ -68,7 +68,9 @@ module.exports = function (passport) {
         let newUser = new User({
           local: {
             email: email,
-            password: User.encrypt(password)  // calling encrypted password from user.js model. Notice bcrypt not required on this passportConfig.js page, because  encrypt passed as statics method to User
+            password: User.encrypt(password), // calling encrypted password from user.js model. Notice bcrypt not required on this passportConfig.js page, because  encrypt passed as statics method to User
+            nickname: req.body.nickname,
+            comment: []
           }
         })
         newUser.save(function (err, output) {

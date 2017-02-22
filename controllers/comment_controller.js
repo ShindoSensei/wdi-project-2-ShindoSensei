@@ -3,10 +3,11 @@ let Comment = require('../models/comment')
 let commentController = {
 
   show: (req, res) => {
-    Comment.find({videoid: req.params.id}, function (err, doc) {
+    Comment.find({videoid: req.params.id}).populate('user').exec(function (err, doc) {
       if (err) {
         throw err
       }
+      console.log(doc)
       res.render('videos/show', {
         videoId: req.params.id,
         submittedArray: doc
@@ -15,16 +16,20 @@ let commentController = {
   },
 
   create: (req, res) => {
-    Comment.create({
+    var newComment = new Comment({
       videoid: req.params.id,
       timing: req.body.timing,
       sugsub: req.body.sugsub,
-      reason: req.body.reason
-      // user: ...
-    }, function (err, output) {
+      reason: req.body.reason,
+      user: req.user._id
+    })
+
+    newComment.save(function (err, output) {
       if (err) {
         console.log(err)
       }
+      req.user.local.comment.push(newComment)
+      req.user.save()
       res.redirect('/videos/' + req.params.id)
     })
   },
@@ -57,6 +62,8 @@ let commentController = {
         throw err
       }
       console.log('Deleted comment of id:' + req.query.commentid)
+      req.user.local.comment.splice(req.user.local.comment.indexOf(req.query.commentid), 1)
+      req.user.save()
       res.redirect('/videos/' + req.params.id)
     })
   }

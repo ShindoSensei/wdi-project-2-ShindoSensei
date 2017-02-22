@@ -11,19 +11,11 @@ var CommentSchema = new mongoose.Schema({
   },
   reason: {
     type: String, required: [true, 'No reason entered!']
-  }
-  // user:...
+  },
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 
 })
 
-// AnimalSchema.virtual('breedFamily').get(function () {
-//   return this.breed + ' ' + this.family
-// })
-//
-// AnimalSchema.virtual('member_since').get(function () {
-//   return this.dob.getFullYear()
-// })
-//
 var Comment = mongoose.model('Comment', CommentSchema)
 
 module.exports = Comment

@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
 var UserSchema = new mongoose.Schema({
   local: {
     email: {type: String, unique: true},
-    password: {type: String}
+    password: {type: String},
+    nickname: {type: String},
+    comment: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
   }
 })
 

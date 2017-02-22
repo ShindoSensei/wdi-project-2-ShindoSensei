@@ -46,7 +46,7 @@
         <%submittedArray.forEach(function(sub){%>
           <div class="commentBox">
             <div class="usertag">
-              <span class="label label-default usertag">User123</span>
+              <span class="label label-default usertag"><%=sub.user.local.nickname%></span>
             </div>
             <strong>Timing</strong>
             <p class="editClass" data-type="textarea" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
@@ -61,6 +61,7 @@
               <button class="btn btn-default btn-xs" type="submit">Delete</button>
             </form>
           </div>
+          <br>
         <%})%>
       </div>
     </div>
