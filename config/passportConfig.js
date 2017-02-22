@@ -4,6 +4,7 @@ const User = require('../models/user')
 
 module.exports = function (passport) {
   passport.serializeUser(function (user, next) { // this needs to be placed before passport.use('local-signup'),... below.  Session needs to be updated after new user created
+  // passport 'serializes' objects to make them easy to store, converting the user to an identifier(id), i.e. key to the door
     next(null, user.id)
   })
 
@@ -12,6 +13,7 @@ module.exports = function (passport) {
       next(err, user)
     })
   })
+  // passport 'deserializes' objects by taking the user's serialization (id) and looking it up in the database
   passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',

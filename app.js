@@ -22,10 +22,12 @@ mongoose.Promise = global.Promise
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')))
+
 app.use(cookieParser('process.env.SESSION_SECRET'))
+
 app.use(session({
   secret: 'process.env.SESSION_SECRET',
-  cookie: { maxAge: 60000 },
+  cookie: { maxAge: 3600000 },
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({ // Storing the mongostore in, so we don't have to keep signing in when we do npm start again and restart server.
@@ -38,7 +40,6 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 require('./config/passportConfig')(passport)    // this line looks into passportConfig.js
-
 app.use(flash())
 
 app.use(methodOverride('_method'))
