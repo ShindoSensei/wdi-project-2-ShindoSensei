@@ -24,11 +24,11 @@ router.post('/login', authController.login)
 
 // Logout
 router.get('/logout', function (req, res) {
-  // req.logout() // remove the session => req.user will now be = undefined , req.isAuthenticated() will = false
-  req.session.destroy(function (err) {
-    if (err) { throw err }
-    res.redirect('/')
-  })
-  // res.redirect('/')
+  req.logout() // remove the session => req.user will now be = undefined , req.isAuthenticated() will = false
+  // req.session.destroy(function (err) {
+  //   if (err) { throw err }
+  //   res.redirect('/')
+  // })r
+  res.redirect('/')
 })
 module.exports = router
