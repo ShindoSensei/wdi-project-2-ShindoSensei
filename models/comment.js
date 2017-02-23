@@ -14,7 +14,7 @@ var CommentSchema = new mongoose.Schema({
   },
   upvote: {type: Number},
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-//upvoteusers:[] array of user objects that have upvoted
+// upvoteusers:[] array of user objects that have upvoted
 })
 
 var Comment = mongoose.model('Comment', CommentSchema)
