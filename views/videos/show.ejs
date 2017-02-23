@@ -64,6 +64,11 @@
             <p class="<%=whatClass%>" data-type="text" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
             </p>
 
+            <div id=<%="topic" + submittedArray.indexOf(sub)%> class="upvote">
+              <a class="upvote"></a>
+              <span class="count">0</span>
+            </div>
+
             <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
               <button class="btn btn-danger btn-xs <%=buttonClass%>" type="submit">Delete</button>
             </form>

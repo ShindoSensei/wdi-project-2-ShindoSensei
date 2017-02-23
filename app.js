@@ -67,7 +67,7 @@ app.get('/', vikiAuth)
 const videoRoute = require('./routes/video_router')
 app.use('/videos', videoRoute)
 
-const port = 5001
+const port = process.env.PORT || 5001
 app.listen(port, function () {
   console.log('Running on port ' + port)
 })

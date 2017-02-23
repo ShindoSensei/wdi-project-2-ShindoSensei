@@ -1,9 +1,11 @@
 const bcrypt = require('bcrypt') // to hash passwords
 const mongoose = require('mongoose')
 
+var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+
 var UserSchema = new mongoose.Schema({
   local: {
-    email: {type: String, unique: true},
+    email: {type: String, unique: true, match: emailRegex},
     password: {type: String},
     nickname: {type: String},
     comment: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
