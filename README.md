@@ -4,7 +4,7 @@ Crowdsourcing subtitle checking of videos!
 
 ## Live Version
 
-[Live Demo]: (https://arcane-retreat-97044.herokuapp.com/)
+* [Live Demo](https://arcane-retreat-97044.herokuapp.com/)
 
 ## Getting Started
 
