@@ -51,24 +51,25 @@
             <strong>Timing</strong>
             <%var whatClass =""%>
             <%var buttonClass="hidden"%>
+            <%var upvote = "upvote"%>
             <%if(user.local.email===sub.user.local.email){%>
               <%whatClass = "editClass noBorder"%>
               <%buttonClass = ""%>
               <%}%>
-            <p class="<%=whatClass%>" data-type="text" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
+            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
             </p>
             <strong>Suggested Subs</strong>
-            <p class="<%=whatClass%>" data-type="text" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
+            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
             </p>
             <strong>Reason</strong>
-            <p class="<%=whatClass%>" data-type="text" data-pk=<%=sub._id%> data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
+            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
             </p>
 
-            <div id=<%="topic" + submittedArray.indexOf(sub)%> class="upvote">
-              <a class="upvote"></a>
-              <span class="count">0</span>
-            </div>
+                <button class="btn btn-success btn-xs upvote glyphicon glyphicon-arrow-up voteButton <%=sub._id%>" type="button" data-url="/videos/<%=videoId%>/upvote?_method=PUT&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
+                  <%=sub.upvote%>
+                </button>
 
+              <br><br>
             <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
               <button class="btn btn-danger btn-xs <%=buttonClass%>" type="submit">Delete</button>
             </form>

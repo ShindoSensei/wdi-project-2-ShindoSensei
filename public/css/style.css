@@ -4,7 +4,11 @@
 }
 
 .upvote {
-  margin-bottom:10px;
+  font-size: 12px;
+}
+
+.votecount{
+  font-size:16px;
 }
 
 .usertag {

@@ -21,7 +21,9 @@ let commentController = {
       timing: req.body.timing,
       sugsub: req.body.sugsub,
       reason: req.body.reason,
-      user: req.user._id
+      user: req.user._id,
+      upvote: 0,
+      upvotedusers: []
     })
 
     newComment.save(function (err, output) {
@@ -34,6 +36,46 @@ let commentController = {
     })
   },
 
+  increment: (req, res) => {
+ // function to increment upvotes on comment when clicked
+    Comment.findById(req.query.commentid).populate('user').exec(function (err, doc) {
+      if (err) {
+        throw err
+      }
+      var usersUpvotedArr = doc.upvotedusers
+      // console.log('usersUpvotedArr[0] is :' + usersUpvotedArr[0])
+      // console.log('type of usersUpvotedArr[0] is: ' + typeof usersUpvotedArr[0].toString())
+      var isInArray = usersUpvotedArr.some(function (item) {
+        return item.toString() === req.user._id.toString() // if any array elm === id, isInArray will be true
+      })
+      var newCount
+      if (!isInArray) {
+ // If user never upvote before, allow upvote
+        console.log('Upvoting!')
+        newCount = parseInt(req.body.votecount) + 1
+        Comment.findByIdAndUpdate(req.query.commentid, {
+          $push: {upvotedusers: req.user._id}, // pushing current user's id into upvotedusers array
+          upvote: newCount// increasing vote count
+        }, {new: true}, function (err, output) {
+          if (err) { throw err }
+          // res.redirect('/videos/' + req.params.id)
+          res.send(newCount.toString())
+        })
+      } else {
+        console.log('Downvoting!')
+        newCount = parseInt(req.body.votecount) - 1
+        Comment.findByIdAndUpdate(req.query.commentid, {
+          $pull: {upvotedusers: req.user._id}, // pulling current user's id from upvotedusers array
+          upvote: newCount // reducing vote count
+        }, {new: true}, function (err, output) {
+          if (err) { throw err }
+          // res.redirect('/videos/' + req.params.id)
+          res.send(newCount.toString())
+        })
+      }
+    })
+  },
+
   edit: (req, res) => {
     var updatedObject = {}
     if (req.body.name === 'timing') {
@@ -43,6 +85,7 @@ let commentController = {
     } else if (req.body.name === 'reason') {
       updatedObject = {reason: req.body.value}
     }
+
     Comment.findByIdAndUpdate(req.query.commentid,
       updatedObject,
        {new: true}, function (err, output) {

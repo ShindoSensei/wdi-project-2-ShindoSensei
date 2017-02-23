@@ -1,26 +1,27 @@
 /* global $ */
+$(document).ready(function () {
+// upvote
+  function upVote () {
+    // do ajax to server to call increment function
+    var $this = $(this)
+    var urlToUpVote = $(this).data('url')
+    var currentVoteCount = $(this).text()
 
-$('.upvote').upvote({count: 0, upvoted: 0}) // Check if all the counts add to the same
+    $.ajax({ // ajax to update number of votes
+      url: urlToUpVote,
+      method: 'POST',
+      data: {votecount: currentVoteCount},
+      success: function (data) {
+        $this.text(data)
+        // $this.load(currentUrl + ' .' + subid + ' > *')
+      }
+    })
+  }
 
-// Possible manual created upvote and downvote
-// <input type="submit" name="action" value="increment" />
-// <input type="submit" name="action" value="decrement" />
-//
-//   if (IsPost) { if (Request["action"] == "increment")
-//  {
-//        //increment code here
-//       }
-//   //decrement code here
-
-// var upvoteArr = document.getElementsByClassName('upvote')
-// for (var i = 0; i < upvoteArr.length; i++) {
-//   $('#' + upvoteArr[i].id).upvote({count: 0, upvoted: 0})
-// }
+  // Click event handler to all votebuttons
+  $('.voteButton').click(upVote)
 
 // x-editable
-// turn to inline mode
-
-$(document).ready(function () {
   $.fn.editable.defaults.mode = 'inline'
   $('.editClass').editable()
 })

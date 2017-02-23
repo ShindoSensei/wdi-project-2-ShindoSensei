@@ -10,6 +10,8 @@ router.post('/:id', commentController.create)
 
 router.put('/:id', commentController.edit)
 
+router.put('/:id/upvote', commentController.increment)
+
 router.delete('/:id', commentController.delete)
 
 module.exports = router
