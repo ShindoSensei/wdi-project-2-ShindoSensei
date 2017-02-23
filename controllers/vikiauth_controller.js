@@ -4,8 +4,8 @@ const crypto = require('crypto')
 module.exports = function vikiAuth (req, res) {
   // Accessing Viki API
   // Viki authentication
-  var appId = '100642a'
-  var vikiSecret = 'ae241ae5ccf13f0a7bd182759e35ad985588c6998d40038566fa3a0d107ee2292c428faf1ec0'
+  var appId = process.env.APPNUM
+  var vikiSecret = process.env.APPSECRET
   var timeStamp = Math.floor(Date.now() / 1000)  // unix time stamp
   // Setting SHA1-HMAC signature
   var hmac = crypto.createHmac('sha1', vikiSecret)
