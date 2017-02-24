@@ -17,9 +17,7 @@ $(document).ready(function () {
       }
     })
   }
-
-  // Click event handler to all votebuttons
-
+  // Click event handler on doc. Event delegation to listen for any event bubbling up.
   $(document).on('click', '.voteButton', {}, upVote)
 
 // jquery ajax-form plugin for new comments submission
@@ -34,7 +32,6 @@ $(document).ready(function () {
 
   }
 
-  // $('.deleteForm').ajaxForm(deleteOptions)
   $('.newCommentsForm').ajaxForm(createOptions)
 
   // Delete ajax
@@ -42,8 +39,6 @@ $(document).ready(function () {
     // do ajax to server to call increment function
     // var $this = $(this)
     var urlToDelete = $(this).data('deleteurl')
-    // var currentUrl = $(this).data('currenturl')
-    // var subid = $(this).data('subid')
 
     $.ajax({ // ajax to delete comments and partial render
       url: urlToDelete,
@@ -60,5 +55,6 @@ $(document).ready(function () {
 
 // x-editable
   $.fn.editable.defaults.mode = 'inline'
-  $('.editClass').editable()
+  // $('.editClass').editable()
+  $(document).editable({selector: '.editClass'})
 })
