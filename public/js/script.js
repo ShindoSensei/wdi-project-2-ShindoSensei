@@ -24,27 +24,15 @@ $(document).ready(function () {
 
 // jquery ajax-form plugin for new comments submission
   var createOptions = {
-    target: '.commentsDiv',
+    // target: '.commentsDiv',
+    success: function (data) {
+      $('.commentsDiv').html(data)
+    },
     clearForm: true,
     resetForm: true,
     replaceTarget: true // Replace target fully (instead of just its contents)with server res
-  }
 
-  // jquery ajax-form plugin for deleting comments
-  // var deleteOptions = {
-  //   target: '.commentsDiv',
-  //   beforeSubmit: function () {
-  //     $('.deleteForm').clearForm()
-  //   },
-  //   replaceTarget: true,
-  //   success: function () {
-  //     window.alert('Success delete')
-  //   },
-  //   error: function () {
-  //     console.log('delete via ajax failed!')
-  //   }
-  //
-  // }
+  }
 
   // $('.deleteForm').ajaxForm(deleteOptions)
   $('.newCommentsForm').ajaxForm(createOptions)
