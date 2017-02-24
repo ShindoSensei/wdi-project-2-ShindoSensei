@@ -10,7 +10,8 @@ let commentController = {
       console.log(doc)
       res.render('videos/show', {
         videoId: req.params.id,
-        submittedArray: doc
+        submittedArray: doc,
+        flash: req.flash('flash')[0]
       })
     })
   },
@@ -32,7 +33,19 @@ let commentController = {
       }
       req.user.local.comment.push(newComment)
       req.user.save()
-      res.redirect('/videos/' + req.params.id)
+      // Rendering comment page fragment into comment div
+      Comment.find({videoid: req.params.id}).populate('user').exec(function (err, doc) {
+        if (err) {
+          throw err
+        }
+        console.log(doc)
+        res.render('partials/comments', {
+          layout: false,
+          videoId: req.params.id,
+          submittedArray: doc
+          // flash: req.flash('flash')[0]
+        })
+      })
     })
   },
 
@@ -43,8 +56,6 @@ let commentController = {
         throw err
       }
       var usersUpvotedArr = doc.upvotedusers
-      // console.log('usersUpvotedArr[0] is :' + usersUpvotedArr[0])
-      // console.log('type of usersUpvotedArr[0] is: ' + typeof usersUpvotedArr[0].toString())
       var isInArray = usersUpvotedArr.some(function (item) {
         return item.toString() === req.user._id.toString() // if any array elm === id, isInArray will be true
       })

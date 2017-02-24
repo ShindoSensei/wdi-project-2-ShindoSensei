@@ -45,6 +45,7 @@ app.use(flash())
 app.use(methodOverride('_method'))
 app.use(logger('dev')) // Show the http request status in console
 app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
 

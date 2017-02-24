@@ -1,4 +1,4 @@
-
+<%- include('../partials/flash') %>
 <div class="row">
   <div class="col-md-12 text-center">
     <iframe width="560" height="300" allowtransparency="true" frameborder="0" src=<%="https://www.viki.com/player/" + videoId%>>
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-4 commentsDiv">
     <div class="panel panel-info">
       <div class="panel-heading text-center">
         <h3 class="panel-title">Submitted</h3>
@@ -87,7 +87,7 @@
       </div>
       <div class="panel-body">
         <%# Creating new comments form%>
-        <form class="" action=<%="/videos/" +videoId%> method="post">
+        <form class="newCommentsForm" action=<%="/videos/" +videoId%> method="post">
           <div class="form-group">
             <div class="row">
               <div class="col-md-12 text-left">

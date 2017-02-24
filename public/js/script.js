@@ -21,6 +21,15 @@ $(document).ready(function () {
   // Click event handler to all votebuttons
   $('.voteButton').click(upVote)
 
+// jquery ajax-form plugin
+  var options = {
+    target: '.commentsDiv',
+    clearForm: true,
+    replaceTarget: true // Replace target fully (instead of just its contents)with server res
+  }
+
+  $('.newCommentsForm').ajaxForm(options)
+
 // x-editable
   $.fn.editable.defaults.mode = 'inline'
   $('.editClass').editable()
