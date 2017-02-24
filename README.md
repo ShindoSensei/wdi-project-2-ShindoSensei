@@ -33,6 +33,7 @@ Code example
 
 * [jQuery](http://jquery.com/)
 * [Bootstrap] (https://getbootstrap.com/)
+* [jQuery Form Plugin] (http://malsup.com/jquery/form/)
 
 
 ## Workflow

@@ -1,4 +1,4 @@
-<div class="col-md-4 commentsDiv">
+<div class="col-md-12 commentsDiv">
   <div class="panel panel-info">
     <div class="panel-heading text-center">
       <h3 class="panel-title">Submitted</h3>
@@ -31,9 +31,10 @@
               </button>
 
             <br><br>
-          <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
-            <button class="btn btn-danger btn-xs <%=buttonClass%>" type="submit">Delete</button>
-          </form>
+            <button class="btn btn-danger btn-xs <%=buttonClass%> <%=sub._id%> deleteButton" type="button" data-deleteurl="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
+              Delete
+            </button>
+
         </div>
         <br>
       <%})%>

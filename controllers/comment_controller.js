@@ -118,7 +118,17 @@ let commentController = {
       console.log('Deleted comment of id:' + req.query.commentid)
       req.user.local.comment.splice(req.user.local.comment.indexOf(req.query.commentid), 1)
       req.user.save()
-      res.redirect('/videos/' + req.params.id)
+      Comment.find({videoid: req.params.id}).populate('user').exec(function (err, doc) {
+        if (err) {
+          throw err
+        }
+        console.log(doc)
+        res.render('partials/comments', {
+          layout: false,
+          videoId: req.params.id,
+          submittedArray: doc
+        })
+      })
     })
   }
 }

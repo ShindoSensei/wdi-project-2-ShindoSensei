@@ -70,9 +70,11 @@
                 </button>
 
               <br><br>
-            <form method="POST" action="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>">
-              <button class="btn btn-danger btn-xs <%=buttonClass%>" type="submit">Delete</button>
-            </form>
+
+              <button class="btn btn-danger btn-xs <%=buttonClass%> <%=sub._id%> deleteButton" type="button" data-deleteurl="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
+                Delete
+              </button>
+
           </div>
           <br>
         <%})%>

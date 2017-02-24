@@ -19,16 +19,56 @@ $(document).ready(function () {
   }
 
   // Click event handler to all votebuttons
-  $('.voteButton').click(upVote)
 
-// jquery ajax-form plugin
-  var options = {
+  $(document).on('click', '.voteButton', {}, upVote)
+
+// jquery ajax-form plugin for new comments submission
+  var createOptions = {
     target: '.commentsDiv',
     clearForm: true,
+    resetForm: true,
     replaceTarget: true // Replace target fully (instead of just its contents)with server res
   }
 
-  $('.newCommentsForm').ajaxForm(options)
+  // jquery ajax-form plugin for deleting comments
+  // var deleteOptions = {
+  //   target: '.commentsDiv',
+  //   beforeSubmit: function () {
+  //     $('.deleteForm').clearForm()
+  //   },
+  //   replaceTarget: true,
+  //   success: function () {
+  //     window.alert('Success delete')
+  //   },
+  //   error: function () {
+  //     console.log('delete via ajax failed!')
+  //   }
+  //
+  // }
+
+  // $('.deleteForm').ajaxForm(deleteOptions)
+  $('.newCommentsForm').ajaxForm(createOptions)
+
+  // Delete ajax
+  function removeComment () {
+    // do ajax to server to call increment function
+    // var $this = $(this)
+    var urlToDelete = $(this).data('deleteurl')
+    // var currentUrl = $(this).data('currenturl')
+    // var subid = $(this).data('subid')
+
+    $.ajax({ // ajax to delete comments and partial render
+      url: urlToDelete,
+      method: 'POST',
+      success: function (data) {
+        $('.commentsDiv').html(data)
+        // window.alert(data)
+        // $this.load(currentUrl + ' .' + subid + ' > *')
+      }
+    })
+  }
+
+  $(document).on('click', '.deleteButton', {}, removeComment)
 
 // x-editable
   $.fn.editable.defaults.mode = 'inline'
