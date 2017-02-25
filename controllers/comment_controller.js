@@ -44,7 +44,9 @@ let commentController = {
           res.render('partials/comments', {
             layout: false,
             videoId: req.params.id,
-            submittedArray: doc
+            submittedArray: doc,
+            minHide: 'hidden',
+            secHide: ''
           // flash: req.flash('flash')[0]
           })
         })
@@ -53,10 +55,16 @@ let commentController = {
 
   viewMin: (req, res) => {
     var showObj
+    var minuteHide
+    var secondHide
     if (req.body.minute === 'all') {
       showObj = {videoid: req.params.id}
+      minuteHide = ''
+      secondHide = 'hidden'
     } else {
       showObj = {videoid: req.params.id, timingmin: req.body.minute}
+      minuteHide = 'hidden'
+      secondHide = ''
     }
     Comment.find(
       showObj).populate('user').sort({upvote: 'descending', timingsec: 'ascending'}).exec(function (err, doc) {
@@ -66,7 +74,9 @@ let commentController = {
         res.render('partials/comments', {
           layout: false,
           videoId: req.params.id,
-          submittedArray: doc
+          submittedArray: doc,
+          minHide: minuteHide,
+          secHide: secondHide
         // flash: req.flash('flash')[0]
         })
       })
@@ -152,7 +162,9 @@ let commentController = {
           res.render('partials/comments', {
             layout: false,
             videoId: req.params.id,
-            submittedArray: doc
+            submittedArray: doc,
+            minHide: 'hidden',
+            secHide: ''
           })
         })
     })
