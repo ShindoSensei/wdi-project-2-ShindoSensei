@@ -1,88 +1,29 @@
 <%- include('../partials/flash') %>
 <div class="row">
   <div class="col-md-12 text-center">
-    <iframe width="560" height="300" allowtransparency="true" frameborder="0" src=<%="https://www.viki.com/player/" + videoId%>>
+    <iframe id="iframe" width="560" height="300" allowtransparency="true" frameborder="0" src=<%="https://www.viki.com/player/" + videoId%>>
     </iframe>
   </div>
 </div>
+<form class="minuteForm" action=<%="/videos/" +videoId+ "/view"%> method="post">
+  <label for="minute">Minute:</label>
+    <input type="text" class="minuteInput" id="minute" name="minute">
+  <button type="submit" class="btn btn-primary btn-xs">View</button>
+</form>
+<p class="minuteDesc">e.g. Entering '0' yields comments between 0 - 1 min</p>
 
 <div class="row">
-  <div class="col-md-4 text-center">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Original</h3>
-      </div>
-      <div class="panel-body">
-        <div class="commentBox">
-          <p><b>1</b></p>
-          <p>00:04:59,560 --> 00:05:03,553</p>
-          <p>What were you saying?</p>
-        </div>
-        <div class="commentBox">
-          <p><b>2</b></p>
-          <p>00:05:14,400 --> 00:05:16,550</p>
-          <p>That the reason why dirt spoon Cinderella was able to meet a gold spoon man was because she went to the ball</p>
-        </div>
-        <div class="commentBox">
-          <p><b>3</b></p>
-          <p>00:05:16,840 --> 00:05:19,115</p>
-          <p>Well, that audacity!</p>
-        </div>
-        <div class="commentBox">
-          <p><b>4</b></p>
-          <p>00:05:19,400 --> 00:05:21,834</p>
-          <p>Indeed. Makes me feel like the colour of my red shirt.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4 commentsDiv">
+  <div class="col-md-6 commentsDiv">
     <div class="panel panel-info">
       <div class="panel-heading text-center">
-        <h3 class="panel-title">Submitted</h3>
+        <h3 class="panel-title">CrowdWall</h3>
       </div>
-      <div class="panel-body">
-        <%submittedArray.forEach(function(sub){%>
-          <div class="commentBox">
-            <div class="usertag">
-              <span class="label label-default usertag"><%=sub.user.local.nickname%></span>
-            </div>
-            <strong>Timing</strong>
-            <%var whatClass =""%>
-            <%var buttonClass="hidden"%>
-            <%var upvote = "upvote"%>
-            <%if(user.local.email===sub.user.local.email){%>
-              <%whatClass = "editClass noBorder"%>
-              <%buttonClass = ""%>
-              <%}%>
-            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
-            </p>
-            <strong>Suggested Subs</strong>
-            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
-            </p>
-            <strong>Reason</strong>
-            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
-            </p>
-
-                <button class="btn btn-success btn-xs upvote glyphicon glyphicon-arrow-up voteButton <%=sub._id%>" type="button" data-url="/videos/<%=videoId%>/upvote?_method=PUT&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
-                  <%=sub.upvote%>
-                </button>
-
-              <br><br>
-
-              <button class="btn btn-danger btn-xs <%=buttonClass%> <%=sub._id%> deleteButton" type="button" data-deleteurl="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
-                Delete
-              </button>
-
-          </div>
-          <br>
-        <%})%>
+      <div class="panel-body text-center commentsPanel">
       </div>
     </div>
   </div>
 
-  <div class="col-md-4 text-center">
+  <div class="col-md-6 text-center">
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">CrowdSub</h3>
@@ -92,36 +33,30 @@
         <form class="newCommentsForm" action=<%="/videos/" +videoId%> method="post">
           <div class="form-group">
             <div class="row">
-              <div class="col-md-12 text-left">
-                <label for="timing">Timing</label>
+              <div class="col-md-6 text-left">
+                <label for="timingmin">Minute</label>
+                <input type="number" class="form-control" id="timingmin" name="timingmin">
+              </div>
+              <div class="col-md-6 text-left">
+                <label for="timing">Second</label>
+                <input type="number" class="form-control" id="timingsec" name="timingsec">
               </div>
             </div>
-            <input type="number" class="form-control" id="timing" name="timing" placeholder="Enter Timing number">
             <div class="row">
-              <div class="col-md-12 text-left">
-                <small id="timingHelp" class="form-text text-muted">
-                  <i>Refers to no. above time range</i>
-                </small>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-md-12 text-left">
+              <div class="col-md-12 text-left sugsubdiv">
                 <label for="sugsub">Suggested Subs</label>
               </div>
             </div>
             <input type="text" class="form-control" id="sugsub" name="sugsub" placeholder="e.g. That's why Cinderella is poor...">
-            <br>
             <div class="row">
-              <div class="col-md-12 text-left">
+              <div class="col-md-12 text-left reasondiv">
                 <label for="reason">Reason</label>
               </div>
             </div>
             <input type="text" class="form-control" id="reason" name="reason" placeholder="e.g. Culturally, dirty spoon symbolises poverty...">
           </div>
-          <button type="submit" class="btn btn-primary btn-sm">CrowdSub!</button>
+          <button type="submit" class="btn btn-primary btn-sm crowdSubButt">CrowdSub!</button>
         </form>
-
       </div>
     </div>
   </div>

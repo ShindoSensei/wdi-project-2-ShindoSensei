@@ -8,6 +8,8 @@ router.get('/:id', isNotLoggedIn, commentController.show)
 
 router.post('/:id', commentController.create)
 
+router.post('/:id/view', commentController.viewMin)
+
 router.put('/:id', commentController.edit)
 
 router.put('/:id/upvote', commentController.increment)

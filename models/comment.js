@@ -3,7 +3,10 @@ var CommentSchema = new mongoose.Schema({
   videoid: {
     type: String, required: [true, 'No video id!']
   },
-  timing: {
+  timingmin: {
+    type: String, required: [true, 'No timing entered!']
+  },
+  timingsec: {
     type: String, required: [true, 'No timing entered!']
   },
   sugsub: {

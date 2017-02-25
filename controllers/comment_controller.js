@@ -19,7 +19,8 @@ let commentController = {
   create: (req, res) => {
     var newComment = new Comment({
       videoid: req.params.id,
-      timing: req.body.timing,
+      timingmin: req.body.timingmin,
+      timingsec: req.body.timingsec,
       sugsub: req.body.sugsub,
       reason: req.body.reason,
       user: req.user._id,
@@ -34,19 +35,41 @@ let commentController = {
       req.user.local.comment.push(newComment)
       req.user.save()
       // Rendering comment page fragment into comment div
-      Comment.find({videoid: req.params.id}).populate('user').exec(function (err, doc) {
+      Comment.find({
+        videoid: req.params.id,
+        timingmin: req.body.timingmin}).populate('user').sort({upvote: 'descending'}).exec(function (err, doc) {
+          if (err) {
+            throw err
+          }
+          res.render('partials/comments', {
+            layout: false,
+            videoId: req.params.id,
+            submittedArray: doc
+          // flash: req.flash('flash')[0]
+          })
+        })
+    })
+  },
+
+  viewMin: (req, res) => {
+    var showObj
+    if (req.body.minute === 'all') {
+      showObj = {videoid: req.params.id}
+    } else {
+      showObj = {videoid: req.params.id, timingmin: req.body.minute}
+    }
+    Comment.find(
+      showObj).populate('user').sort({upvote: 'descending'}).exec(function (err, doc) {
         if (err) {
           throw err
         }
-        console.log(doc)
         res.render('partials/comments', {
           layout: false,
           videoId: req.params.id,
           submittedArray: doc
-          // flash: req.flash('flash')[0]
+        // flash: req.flash('flash')[0]
         })
       })
-    })
   },
 
   increment: (req, res) => {
@@ -89,8 +112,10 @@ let commentController = {
 
   edit: (req, res) => {
     var updatedObject = {}
-    if (req.body.name === 'timing') {
-      updatedObject = {timing: req.body.value}
+    if (req.body.name === 'timingmin') {
+      updatedObject = {timingmin: req.body.value}
+    } else if (req.body.name === 'timingsec') {
+      updatedObject = {timingsec: req.body.value}
     } else if (req.body.name === 'sugsub') {
       updatedObject = {sugsub: req.body.value}
     } else if (req.body.name === 'reason') {
@@ -103,7 +128,6 @@ let commentController = {
          if (err) {
            throw err
          }
-         console.log(req)
          console.log('Edited comment of id:' + req.query.commentid)
         //  console.log(req)
          res.redirect('/videos/' + req.params.id)
@@ -118,17 +142,19 @@ let commentController = {
       console.log('Deleted comment of id:' + req.query.commentid)
       req.user.local.comment.splice(req.user.local.comment.indexOf(req.query.commentid), 1)
       req.user.save()
-      Comment.find({videoid: req.params.id}).populate('user').exec(function (err, doc) {
-        if (err) {
-          throw err
-        }
-        console.log(doc)
-        res.render('partials/comments', {
-          layout: false,
-          videoId: req.params.id,
-          submittedArray: doc
+      Comment.find({
+        videoid: req.params.id,
+        timingmin: req.query.timeminute}).populate('user').sort({upvote: 'descending'}).exec(function (err, doc) {
+          if (err) {
+            throw err
+          }
+          console.log(doc)
+          res.render('partials/comments', {
+            layout: false,
+            videoId: req.params.id,
+            submittedArray: doc
+          })
         })
-      })
     })
   }
 }

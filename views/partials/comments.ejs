@@ -1,43 +1,43 @@
-<div class="col-md-12 commentsDiv">
-  <div class="panel panel-info">
-    <div class="panel-heading text-center">
-      <h3 class="panel-title">Submitted</h3>
-    </div>
-    <div class="panel-body">
-      <%submittedArray.forEach(function(sub){%>
-        <div class="commentBox">
-          <div class="usertag">
-            <span class="label label-default usertag"><%=sub.user.local.nickname%></span>
-          </div>
-          <strong>Timing</strong>
-          <%var whatClass =""%>
-          <%var buttonClass="hidden"%>
-          <%var upvote = "upvote"%>
-          <%if(user.local.email===sub.user.local.email){%>
-            <%whatClass = "editClass noBorder"%>
-            <%buttonClass = ""%>
-            <%}%>
-          <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timing"> <%=sub.timing%>
-          </p>
-          <strong>Suggested Subs</strong>
-          <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
-          </p>
-          <strong>Reason</strong>
-          <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
-          </p>
-
-              <button class="btn btn-success btn-xs upvote glyphicon glyphicon-arrow-up voteButton <%=sub._id%>" type="button" data-url="/videos/<%=videoId%>/upvote?_method=PUT&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
-                <%=sub.upvote%>
-              </button>
-
-            <br><br>
-            <button class="btn btn-danger btn-xs <%=buttonClass%> <%=sub._id%> deleteButton" type="button" data-deleteurl="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
+<div class="row">
+  <div class="col-md-12 commentsDiv">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">
+        <h3 class="panel-title">CrowdWall</h3>
+      </div>
+      <div class="panel-body text-center commentsPanel">
+        <%submittedArray.forEach(function(sub){%>
+          <div class="commentBox">
+            <div class="usertag">
+              <span class="label label-default usertag"><%=sub.user.local.nickname%></span>
+            </div>
+            <%var whatClass =""%>
+            <%var buttonClass="hidden"%>
+            <%var upvote = "upvote"%>
+            <%if(user.local.email===sub.user.local.email){%>
+              <%whatClass = "editClass noBorder"%>
+              <%buttonClass = ""%>
+              <%}%>
+            <span class="commentTime"><strong>Min: </strong></span>
+            <span class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timingmin"> <%=sub.timingmin%>
+            </span>
+            <span class="commentTime"><strong>Sec: </strong></span>
+            <span class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timingsec"> <%=sub.timingsec%>
+            </span>
+            <p class="suggestedSubs"><strong>Suggested</strong></p>
+            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
+            </p>
+            <p class="reasonOfSubs"><strong>Reason</strong></p>
+            <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="reason"> <%=sub.reason%>
+            </p>
+            <button class="btn btn-success btn-xs upvote glyphicon glyphicon-arrow-up voteButton <%=sub._id%>" type="button" data-url="/videos/<%=videoId%>/upvote?_method=PUT&commentid=<%=sub._id%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
+              <%=sub.upvote%>
+            </button>
+            <button class="btn btn-danger btn-xs <%=buttonClass%> <%=sub._id%> deleteButton" type="button" data-deleteurl="/videos/<%=videoId%>?_method=DELETE&commentid=<%=sub._id%>&timeminute=<%=sub.timingmin%>" data-currenturl="/videos/<%=videoId%>" data-subid="<%=sub._id%>">
               Delete
             </button>
-
-        </div>
-        <br>
-      <%})%>
+          </div>
+          <br>
+        <%})%>
+      </div>
     </div>
   </div>
-</div>

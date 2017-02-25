@@ -1,18 +1,44 @@
+/*Submitted Comments*/
+
+.commentsDiv{
+  min-height: 300px;
+}
+
+.commentsPanel{
+  min-height:260px;
+}
 .commentBox {
     padding: 7.5px;
     border-bottom:1px dotted #bbb;
+}
+
+.usertag {
+  margin-bottom:10px;
+}
+
+.commentTime{
+  margin-left:10px;
+}
+
+.suggestedSubs, .reasonOfSubs{
+  margin-top:10px;
 }
 
 .upvote {
   font-size: 12px;
 }
 
-.votecount{
-  font-size:16px;
+.voteButton, .deleteButton{
+  display:inline;
+  margin-left:8px;
 }
 
-.usertag {
-  margin-bottom:10px;
+.deleteButton{
+  margin-top:2px;
+}
+
+.votecount{
+  font-size:16px;
 }
 
 .hidden {
@@ -21,4 +47,30 @@
 
 .noBorder {
   border-bottom:none;
+}
+
+/*Minute viewer input*/
+
+.minuteForm{
+  text-align:center;
+}
+
+.minuteInput{
+  width:70px;
+}
+
+.minuteDesc{
+  font-size:12px;
+  font-style:italic;
+  text-align:center;
+  margin-left:90px;
+}
+
+/*Form*/
+.sugsubdiv, .reasondiv{
+  margin-top:10px;
+}
+
+.crowdSubButt{
+  margin-top:-9px;
 }
