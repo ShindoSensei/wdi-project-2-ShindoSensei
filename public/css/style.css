@@ -5,7 +5,7 @@
 }
 
 .commentsPanel{
-  min-height:260px;
+  min-height:256px;
 }
 .commentBox {
     padding: 7.5px;
@@ -47,6 +47,15 @@
 
 .noBorder {
   border-bottom:none;
+}
+
+.crowdWall{
+  display:inline;
+  margin-left: 180px;
+}
+
+.sortButton{
+  /*margin-left:300px;*/
 }
 
 /*Minute viewer input*/

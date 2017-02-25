@@ -6,17 +6,16 @@
   </div>
 </div>
 <form class="minuteForm" action=<%="/videos/" +videoId+ "/view"%> method="post">
-  <label for="minute">Minute:</label>
+  <label for="minute">Comments by Minute:</label>
     <input type="text" class="minuteInput" id="minute" name="minute">
-  <button type="submit" class="btn btn-primary btn-xs">View</button>
+  <button type="submit" class="btn btn-primary btn-xs">Search</button>
 </form>
-<p class="minuteDesc">e.g. Entering '0' yields comments between 0 - 1 min</p>
 
 <div class="row">
   <div class="col-md-6 commentsDiv">
     <div class="panel panel-info">
-      <div class="panel-heading text-center">
-        <h3 class="panel-title">CrowdWall</h3>
+      <div class="panel-heading">
+        <h3 class="panel-title crowdWall">CrowdWall</h3>
       </div>
       <div class="panel-body text-center commentsPanel">
       </div>
@@ -34,11 +33,11 @@
           <div class="form-group">
             <div class="row">
               <div class="col-md-6 text-left">
-                <label for="timingmin">Minute</label>
+                <label for="timingmin">Min</label>
                 <input type="number" class="form-control" id="timingmin" name="timingmin">
               </div>
               <div class="col-md-6 text-left">
-                <label for="timing">Second</label>
+                <label for="timing">Sec</label>
                 <input type="number" class="form-control" id="timingsec" name="timingsec">
               </div>
             </div>

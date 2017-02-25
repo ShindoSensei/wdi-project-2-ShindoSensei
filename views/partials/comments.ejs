@@ -1,8 +1,18 @@
-<div class="row">
-  <div class="col-md-12 commentsDiv">
-    <div class="panel panel-info">
-      <div class="panel-heading text-center">
-        <h3 class="panel-title">CrowdWall</h3>
+<div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="btn-group sortButton">
+          <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class = "mostVoted" href="#">Most upvoted</a></li>
+            <li><a class = "ascMin" href="#">Ascending min</a></li>
+            <li><a class = "descMin" href="#">Descending min</a></li>
+            <li><a class = "ascSec" href="#">Ascending sec</a></li>
+            <li><a class = "descSec" href="#">Descending sec</a></li>
+          </ul>
+        </div>
+        <h3 class="panel-title crowdWall">CrowdWall</h3>
       </div>
       <div class="panel-body text-center commentsPanel">
         <%submittedArray.forEach(function(sub){%>
@@ -18,10 +28,10 @@
               <%buttonClass = ""%>
               <%}%>
             <span class="commentTime"><strong>Min: </strong></span>
-            <span class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timingmin"> <%=sub.timingmin%>
+            <span class="<%=whatClass%> minSort" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timingmin"> <%=sub.timingmin%>
             </span>
             <span class="commentTime"><strong>Sec: </strong></span>
-            <span class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timingsec"> <%=sub.timingsec%>
+            <span class="<%=whatClass%> secSort" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="timingsec"> <%=sub.timingsec%>
             </span>
             <p class="suggestedSubs"><strong>Suggested</strong></p>
             <p class="<%=whatClass%>" data-type="text" data-pk="<%=sub._id%>" data-url="/videos/<%=videoId%>?_method=PUT&commentid=<%=sub._id%>" data-name="sugsub"> <%=sub.sugsub%>
@@ -40,4 +50,3 @@
         <%})%>
       </div>
     </div>
-  </div>

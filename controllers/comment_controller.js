@@ -37,7 +37,7 @@ let commentController = {
       // Rendering comment page fragment into comment div
       Comment.find({
         videoid: req.params.id,
-        timingmin: req.body.timingmin}).populate('user').sort({upvote: 'descending'}).exec(function (err, doc) {
+        timingmin: req.body.timingmin}).populate('user').sort({upvote: 'descending', timingsec: 'ascending'}).exec(function (err, doc) {
           if (err) {
             throw err
           }
@@ -59,7 +59,7 @@ let commentController = {
       showObj = {videoid: req.params.id, timingmin: req.body.minute}
     }
     Comment.find(
-      showObj).populate('user').sort({upvote: 'descending'}).exec(function (err, doc) {
+      showObj).populate('user').sort({upvote: 'descending', timingsec: 'ascending'}).exec(function (err, doc) {
         if (err) {
           throw err
         }
@@ -144,7 +144,7 @@ let commentController = {
       req.user.save()
       Comment.find({
         videoid: req.params.id,
-        timingmin: req.query.timeminute}).populate('user').sort({upvote: 'descending'}).exec(function (err, doc) {
+        timingmin: req.query.timeminute}).populate('user').sort({upvote: 'descending', timingsec: 'ascending'}).exec(function (err, doc) {
           if (err) {
             throw err
           }
