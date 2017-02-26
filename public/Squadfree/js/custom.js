@@ -1,11 +1,5 @@
 // (function ($) {
-//
-// new WOW().init()
-//
-// $(window).load(function () {
-//   $('#preloader').delay(100).fadeOut('slow')
-//   $('#load').delay(100).fadeOut('slow')
-// })
+
 // $(document).ready(function () {
 //   $(this).scrollTop(0)
 // })
@@ -35,5 +29,3 @@ $(function () {
     event.preventDefault()
   })
 })
-
-// })(jQuery);

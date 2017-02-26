@@ -23,7 +23,7 @@ module.exports = function vikiAuth (req, res) {
     subtitle_completion: 'en',
     with_paging: 'true',
     page: '1',
-    per_page: '16'
+    per_page: '15'
   }
   // Fetching Viki API JSON data using request module
   request({
