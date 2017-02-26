@@ -1,29 +1,35 @@
 <%- include('../partials/flash') %>
-<div class="row">
+<div class="row iframerow">
   <div class="col-md-12 text-center">
     <iframe id="iframe" width="560" height="300" allowtransparency="true" frameborder="0" src=<%="https://www.viki.com/player/" + videoId%>>
     </iframe>
   </div>
 </div>
 <form class="minuteForm" action=<%="/videos/" +videoId+ "/view"%> method="post">
-  <label for="minute">Comments by Minute:</label>
+  <label for="minute">Minute Viewer:</label>
     <input type="text" class="minuteInput" id="minute" name="minute">
-  <button type="submit" class="btn btn-primary btn-xs">Search</button>
+  <button type="submit" class="btn btn-default btn-xs minViewButt">Search</button>
 </form>
 
-<div class="row">
+<div class="row wallSubRow">
   <div class="col-md-6 commentsDiv">
-    <div class="panel panel-info">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title crowdWall">CrowdWall</h3>
       </div>
       <div class="panel-body text-center commentsPanel">
+        <h5><b>Minute Viewer</b></h5>
+        <p><i>- Enter 'all' to show all comments</i></p>
+        <p><i>- Enter minute to show comment at that time</i></p>
+        <br>
+        <h5 ><b>Create Comments</b></h5>
+        <p><i>- Enter comment fields on right to begin CrowdSubbing!</i></p>
       </div>
     </div>
   </div>
 
   <div class="col-md-6 text-center">
-    <div class="panel panel-info">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">CrowdSub</h3>
       </div>
@@ -46,15 +52,15 @@
                 <label for="sugsub">Suggested Subs</label>
               </div>
             </div>
-            <input type="text" class="form-control" id="sugsub" name="sugsub" placeholder="e.g. That's why Cinderella is poor...">
+            <input type="text" class="form-control" id="sugsub" name="sugsub" placeholder="Type in what you feel is a more appropriate sub">
             <div class="row">
               <div class="col-md-12 text-left reasondiv">
                 <label for="reason">Reason</label>
               </div>
             </div>
-            <input type="text" class="form-control" id="reason" name="reason" placeholder="e.g. Culturally, dirty spoon symbolises poverty...">
+            <input type="text" class="form-control" id="reason" name="reason" placeholder="Reason to support your sub edit">
           </div>
-          <button type="submit" class="btn btn-primary btn-sm crowdSubButt">CrowdSub!</button>
+          <button type="submit" class="btn btn-default btn-sm crowdSubButt">CrowdSub!</button>
         </form>
       </div>
     </div>

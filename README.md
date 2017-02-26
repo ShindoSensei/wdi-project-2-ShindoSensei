@@ -1,6 +1,18 @@
 # CrowdSub
 
-Crowdsourcing subtitle checking of videos!
+The community of crowdsourced subtitle editing!
+
+## User Story
+
+Recently, my girlfriend complained of poorly subbed Korean dramas.
+Subtitling of exotic shows are usually done by a few non-professional volunteers.
+As a result, these subs are often fraught with errors.
+
+CrowdSub aims to improve this by crowdsourcing the checking of these subtitles!
+
+Just for fun, below is an example of a poorly-subbed scene.
+
+![alt tag](https://raw.githubusercontent.com/ShindoSensei/wdi-project-2-ShindoSensei/master/public/img/poorsubs.png
 
 ## Live Version
 
@@ -8,26 +20,11 @@ Crowdsourcing subtitle checking of videos!
 
 ## Getting Started
 
-1) Clone file
+1)Clone file
 
-2) Register account with Viki App development
+2) ```npm install```
 
-3) Replace
-
-### Prerequisites
-
-TBC
-
-### How to Use
-
-TBC
-
-## Tests
-
-TBC
-```
-Code example
-```
+3) You're good to go!
 
 ## Built With
 
@@ -36,9 +33,3 @@ Code example
 * [jQuery Form Plugin] (http://malsup.com/jquery/form/)
 * [Squadfree Bootstrap template] (https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
 )
-
-## Workflow
-
-Did you write user stories, draw wireframes, use task tracking, produce ERDs? Did you use source control, with regular commits? Include links to them here.
-
-TBC

@@ -1,7 +1,7 @@
-<div class="panel panel-info">
+<div class="panel panel-primary">
       <div class="panel-heading">
         <div class="btn-group sortButton">
-          <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Sort<span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -12,13 +12,13 @@
             <li><a class = "descSec <%=secHide%>" href="#">Descending sec</a></li>
           </ul>
         </div>
-        <h3 class="panel-title crowdWall">CrowdWall</h3>
+        <h3 class="panel-title crowdWallCom">CrowdWall</h3>
       </div>
       <div class="panel-body text-center commentsPanel">
         <%submittedArray.forEach(function(sub){%>
           <div class="commentBox">
             <div class="usertag">
-              <span class="label label-default usertag"><%=sub.user.local.nickname%></span>
+              <span class="label label-primary usertag"><%=sub.user.local.nickname%></span>
             </div>
             <%var whatClass =""%>
             <%var buttonClass="hidden"%>

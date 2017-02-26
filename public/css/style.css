@@ -10,8 +10,103 @@ a {
 }
 
 /*===========================
-  Submitted Comments Page
+  All Video Homepage
 ============================ */
+
+.trendTitle{
+  margin-top:60px;
+  text-align:center;
+}
+
+.gallery{
+  margin-left:62.5px;
+}
+
+.gallery figure img {
+	opacity: 0.9;
+}
+
+.gallery figure figcaption {
+	color: #fff;
+	font-size: 19px;
+  margin-top:5px;
+  margin-bottom:12px;
+}
+
+figure.effect-marley figcaption {
+	text-align: left;
+}
+
+/*===========================
+  Login and Signup page
+============================ */
+.authh1{
+  margin-top:80px;
+}
+
+.authgroup{
+  text-align:center;
+}
+
+.authinput{
+  max-width:300px;
+  margin:auto;
+}
+
+.btnwrap{
+  text-align:center;
+}
+
+/*===========================
+  Individual Video & Comments Page
+============================ */
+
+/*iframe section*/
+
+.iframerow{
+	margin-top:70px;
+}
+
+/*Minute viewer input*/
+
+.minuteForm{
+  text-align:center;
+	margin-left:48px;
+}
+
+.minuteInput{
+  width:70px;
+}
+
+.minuteDesc{
+  font-size:12px;
+  font-style:italic;
+  text-align:center;
+  margin-left:90px;
+
+	.minViewButt{
+
+	}
+}
+
+/*CrowdWall& CrowdSub*/
+
+.wallSubRow{
+	max-width:1120px;
+	margin:auto;
+}
+
+/*CrowdWall*/
+
+.crowdWall, .crowdWallCom{
+  display:inline;
+  margin-left: 210px;
+}
+
+.crowdWallCom{
+  margin-left: 163px;
+}
+
 .commentsDiv{
   min-height: 300px;
 }
@@ -22,6 +117,11 @@ a {
 .commentBox {
     padding: 7.5px;
     border-bottom:1px dotted #bbb;
+		/*max-width:350px;*/
+}
+
+.well{
+	max-width:350px;
 }
 
 .usertag {
@@ -61,27 +161,7 @@ a {
   border-bottom:none;
 }
 
-.crowdWall{
-  display:inline;
-  margin-left: 180px;
-}
 
-/*Minute viewer input*/
-
-.minuteForm{
-  text-align:center;
-}
-
-.minuteInput{
-  width:70px;
-}
-
-.minuteDesc{
-  font-size:12px;
-  font-style:italic;
-  text-align:center;
-  margin-left:90px;
-}
 
 /*Form*/
 .sugsubdiv, .reasondiv{
@@ -90,52 +170,4 @@ a {
 
 .crowdSubButt{
   margin-top:-9px;
-}
-
-/*===========================
-  Login and Signup page
-============================ */
-.authh1{
-  margin-top:80px;
-}
-
-.authgroup{
-  text-align:center;
-}
-
-.authinput{
-  max-width:300px;
-  margin:auto;
-}
-
-.btnwrap{
-  text-align:center;
-}
-
-/*===========================
-  All Video Homepage
-============================ */
-
-.trendTitle{
-  margin-top:60px;
-  text-align:center;
-}
-
-.gallery{
-  margin-left:62.5px;
-}
-
-.gallery figure img {
-	opacity: 0.9;
-}
-
-.gallery figure figcaption {
-	color: #fff;
-	font-size: 19px;
-  margin-top:5px;
-  margin-bottom:12px;
-}
-
-figure.effect-marley figcaption {
-	text-align: left;
 }

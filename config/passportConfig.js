@@ -38,7 +38,7 @@ module.exports = function (passport) {
         }))
       }
       return next(err, foundUser, req.flash('flash', {
-        type: 'success',
+        type: 'info',
         message: 'Successfully logged in. Welcome to CrowdSub ' + foundUser.local.nickname + '!'
       }))
     })
@@ -78,7 +78,7 @@ module.exports = function (passport) {
             throw err
           }
           return next(null, output, req.flash('flash', {
-            type: 'success',
+            type: 'info',
             message: 'Successfully registered ' + output.local.email + ' with CrowdSub!'
           }))
         })
