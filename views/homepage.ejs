@@ -1,17 +1,45 @@
-<% include ./partials/flash %>
-<div class="row">
-  <% videoArr.forEach(function(video) { %>
-    <div class="col-md-3">
+<!-- Squad Theme Section: intro -->
+<section id="intro" class="intro">
+  <div class="slogan">
+    <h2 class="squadh2">WELCOME TO CROWDSUB</h2>
+    <h4 class= "squadh4">THE COMMUNITY OF SUBTITLE EDITORS</h4>
+  </div>
+  <div class="page-scroll">
+    <a href="#showallvideos" class="btn btn-circle">
+      <i class="fa fa-angle-double-down animated"></i>
+    </a>
+  </div>
+</section>
 
-    <div class="thumbnail">
-      <img src=<%=video.images.poster.url%> alt=<%=video.titles.en%> style="width:250px;height:142.8px;">
-      <div class="caption">
-      <a href=<%="/videos/" + video.id%>>
-            <h5><%= video.titles.en %></h5>
+<section id="showallvideos">
+  <div class="heading-about">
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="section-heading">
+        <h2 class="trendTitle">Trending</h2>
+        </div>
 
-      </a>
       </div>
     </div>
     </div>
-  <% }) %>
-</div>
+  </div>
+
+  <% include ./partials/flash %>
+  <div class="row">
+    <% videoArr.forEach(function(video) { %>
+      <div class="col-md-3">
+
+      <div class="thumbnail">
+        <img src=<%=video.images.poster.url%> alt=<%=video.titles.en%> style="width:250px;height:142.8px;">
+        <div class="caption">
+        <a href=<%="/videos/" + video.id%>>
+              <h5><%= video.titles.en %></h5>
+
+        </a>
+        </div>
+      </div>
+      </div>
+    <% }) %>
+  </div>
+</section>

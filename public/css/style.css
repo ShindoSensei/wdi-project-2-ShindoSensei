@@ -83,3 +83,29 @@
 .crowdSubButt{
   margin-top:-9px;
 }
+
+/*Login page*/
+.authh1{
+  margin-top:80px;
+}
+
+.authgroup{
+  /*margin-left:135px;*/
+  text-align:center;
+}
+
+.authinput{
+  max-width:300px;
+  margin:auto;
+}
+
+.btnwrap{
+  text-align:center;
+}
+/*All video page*/
+
+.trendTitle{
+  margin-top:60px;
+  /*margin-left:-190px;*/
+  text-align:center;
+}

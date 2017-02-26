@@ -34,7 +34,8 @@ Code example
 * [jQuery](http://jquery.com/)
 * [Bootstrap] (https://getbootstrap.com/)
 * [jQuery Form Plugin] (http://malsup.com/jquery/form/)
-
+* [Squadfree Bootstrap template] (https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
+)
 
 ## Workflow
 
