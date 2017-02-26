@@ -12,7 +12,7 @@ CrowdSub aims to improve this by crowdsourcing the checking of these subtitles!
 
 Just for fun, below is an example of a poorly-subbed scene.
 
-(https://github.com/ShindoSensei/wdi-project-2-ShindoSensei/master/public/img/poorsubs.png
+![poorsubs](https://cloud.githubusercontent.com/assets/21160516/23342466/b1683284-fc95-11e6-9765-960344267d60.png)
 
 ## Live Version
 
