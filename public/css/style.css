@@ -64,7 +64,7 @@ figure.effect-marley figcaption {
 /*iframe section*/
 
 .iframerow{
-	margin-top:70px;
+	margin-top:50px;
 }
 
 /*Minute viewer input*/
@@ -112,7 +112,7 @@ figure.effect-marley figcaption {
 }
 
 .commentsPanel{
-  min-height:256px;
+  min-height:225px;
 }
 .commentBox {
     padding: 7.5px;
@@ -165,9 +165,17 @@ figure.effect-marley figcaption {
 
 /*Form*/
 .sugsubdiv, .reasondiv{
-  margin-top:10px;
+  margin-top:2px;
 }
 
 .crowdSubButt{
   margin-top:-9px;
+}
+
+.newCommentsForm{
+	font-size: 12px;
+}
+
+.formPanel{
+	padding-top:5px
 }
