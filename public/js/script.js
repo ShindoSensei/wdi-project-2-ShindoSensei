@@ -20,30 +20,61 @@ $(document).ready(function () {
   $(document).on('click', '.voteButton', {}, upVote)
 
 // jquery ajax-form plugin for minute view submission
-  var viewOptions = {
-    success: function (data) {
-      $('.commentsDiv').html(data)
-    },
-    clearForm: true,
-    resetForm: true
-    // replaceTarget: true
-  }
+  // var viewOptions = {
+  //   success: function (data) {
+  //     $('.commentsDiv').html(data)
+  //   },
+  //   clearForm: true,
+  //   resetForm: true
+  //   // replaceTarget: true
+  // }
+  //
+  // $('.minuteForm').ajaxForm(viewOptions)
 
-  $('.minuteForm').ajaxForm(viewOptions)
+  function submitMinForm (e) {
+    e.preventDefault()
+    var form = $('.minuteForm')
+
+    $.ajax({
+      type: 'POST',
+      url: form.attr('action'),
+      data: form.serialize(),
+      success: function (data) {
+        $('.commentsDiv').html(data)
+      }
+    })
+  }
+  //
+  $('.minuteForm').on('submit', submitMinForm)
 
 // jquery ajax-form plugin for new comments submission
-  var createOptions = {
-    // target: '.commentsDiv',
-    success: function (data) {
-      $('.commentsDiv').html(data)
-    },
-    clearForm: true,
-    resetForm: true
-    // replaceTarget: true // Replace target fully (instead of just its contents)with server res
+  // var createOptions = {
+  //   // target: '.commentsDiv',
+  //   success: function (data) {
+  //     $('.commentsDiv').html(data)
+  //   },
+  //   clearForm: true,
+  //   resetForm: true
+  //   // replaceTarget: true // Replace target fully (instead of just its contents)with server res
+  //
+  // }
 
+  // $('.newCommentsForm').ajaxForm(createOptions)
+
+  function submitCommentsForm (e) {
+    e.preventDefault()
+    var form = $('.newCommentsForm')
+    $.ajax({
+      type: 'POST',
+      url: form.attr('action'),
+      data: form.serialize(),
+      success: function (data) {
+        $('.commentsDiv').html(data)
+      }
+    })
   }
 
-  $('.newCommentsForm').ajaxForm(createOptions)
+  $('.newCommentsForm').on('submit', submitCommentsForm)
 
   // Delete ajax
   function removeComment () {
