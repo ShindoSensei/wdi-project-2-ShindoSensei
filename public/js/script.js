@@ -5,13 +5,14 @@ $(document).ready(function () {
     // do ajax to server to call increment function
     var $this = $(this)
     var urlToUpVote = $(this).data('url')
-    var currentVoteCount = $(this).text()
+    // var currentVoteCount = $(this).text()
 
     $.ajax({ // ajax to update number of votes
       url: urlToUpVote,
-      method: 'POST',
-      data: {votecount: currentVoteCount},
+      type: 'POST',
+      // data: {votecount: currentVoteCount},
       success: function (data) {
+        console.log('successfully posted')
         $this.text(data)
       }
     })

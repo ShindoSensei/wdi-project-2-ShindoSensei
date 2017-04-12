@@ -1,6 +1,7 @@
 // Setup the app
 require('dotenv').config({silent: true}) // read .env file first
 const express = require('express')
+var cors = require('cors')
 const app = express()
 const path = require('path')
 const methodOverride = require('method-override')
@@ -21,6 +22,7 @@ mongoose.connect(process.env.MONGODB_URI)
 mongoose.Promise = global.Promise
 
 // Middleware
+app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(cookieParser('process.env.SESSION_SECRET'))

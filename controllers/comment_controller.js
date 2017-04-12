@@ -93,10 +93,12 @@ let commentController = {
         return item.toString() === req.user._id.toString() // if any array elm === id, isInArray will be true
       })
       var newCount
+      var commentUpvotes = doc.upvote  // Just added
       if (!isInArray) {
  // If user never upvote before, allow upvote
         console.log('Upvoting!')
-        newCount = parseInt(req.body.votecount) + 1
+        // newCount = parseInt(req.body.votecount) + 1 //just commented
+        newCount = commentUpvotes + 1  // just added
         Comment.findByIdAndUpdate(req.query.commentid, {
           $push: {upvotedusers: req.user._id}, // pushing current user's id into upvotedusers array
           upvote: newCount// increasing vote count
@@ -107,7 +109,7 @@ let commentController = {
         })
       } else {
         console.log('Downvoting!')
-        newCount = parseInt(req.body.votecount) - 1
+        newCount = commentUpvotes - 1
         Comment.findByIdAndUpdate(req.query.commentid, {
           $pull: {upvotedusers: req.user._id}, // pulling current user's id from upvotedusers array
           upvote: newCount // reducing vote count
